@@ -1,0 +1,288 @@
+#include <SoftwareSerial.h>
+#include <TinyGPS++.h>
+static const int RXPin = 4, TXPin = 5;
+SoftwareSerial mySerial(2,3);
+SoftwareSerial ss(RXPin, TXPin);
+TinyGPSPlus gps;
+void setup()
+{
+  ss.begin(9600);
+  mySerial.begin(115200);   // Setting the baud rate of GSM Module  
+  Serial.begin(9600);
+  pinMode(13,OUTPUT);
+}
+void loop()
+{
+  while(Serial.available())
+  {
+    char j=Serial.read();
+    if(j=='1')
+    {
+        Serial.println("SHE NEEDS HELP");
+        while (ss.available() > 0)
+          if (gps.encode(ss.read()))
+            displayInfo();
+            if (millis() > 5000 && gps.charsProcessed() < 10)
+            {
+              Serial.println(F("No GPS detected: check wiring."));
+              SendMessage("SHE NEEDS HELP  https://www.google.com/maps/search/?api=1&query=12.862242199988533,80.13094248192812");
+            }
+    }
+    if(j=='2')
+    {
+        Serial.println("SHE IS IN DANGER");
+        while (ss.available() > 0)
+          if (gps.encode(ss.read()))
+            displayInfo();
+            if (millis() > 5000 && gps.charsProcessed() < 10)
+            {
+              Serial.println(F("No GPS detected: check wiring."));
+              SendMessage("SHE IS IN DANGER  https://www.google.com/maps/search/?api=1&query=12.862242199988533,80.13094248192812");
+            }
+    }
+    if(j=='3')
+    {
+        Serial.println("SOMEONE HITS HER");
+        while (ss.available() > 0)
+          if (gps.encode(ss.read()))
+            displayInfo();
+            if (millis() > 5000 && gps.charsProcessed() < 10)
+            {
+              Serial.println(F("No GPS detected: check wiring."));
+              SendMessage("SOMEONE HITS HER https://www.google.com/maps/search/?api=1&query=12.862242199988533,80.13094248192812");
+            }
+    }
+    if(j=='4')
+    {
+        Serial.println("SOMEONE PULLS HER");
+        while (ss.available() > 0)
+          if (gps.encode(ss.read()))
+            displayInfo();
+            if (millis() > 5000 && gps.charsProcessed() < 10)
+            {
+              Serial.println(F("No GPS detected: check wiring."));
+              SendMessage("SOMEONE PULLS HER  https://www.google.com/maps/search/?api=1&query=12.862242199988533,80.13094248192812");
+            }
+    }
+     if(j=='5')
+    {
+        Serial.println("SOMEONE HOLDS HER");
+        while (ss.available() > 0)
+          if (gps.encode(ss.read()))
+            displayInfo();
+            if (millis() > 5000 && gps.charsProcessed() < 10)
+            {
+              Serial.println(F("No GPS detected: check wiring."));
+              SendMessage("SOMEONE HOLDS HER  https://www.google.com/maps/search/?api=1&query=12.862242199988533,80.13094248192812");
+            }
+    }
+     if(j=='6')
+    {
+        Serial.println("SOMEONE PUSHES HER");
+        while (ss.available() > 0)
+          if (gps.encode(ss.read()))
+            displayInfo();
+            if (millis() > 5000 && gps.charsProcessed() < 10)
+            {
+              Serial.println(F("No GPS detected: check wiring."));
+              SendMessage("SOMEONE PUSHES HER  https://www.google.com/maps/search/?api=1&query=12.862242199988533,80.13094248192812");
+            }
+    }
+      if(j=='7')
+    {
+        Serial.println("SOMEONE PINCHES HER");
+        while (ss.available() > 0)
+          if (gps.encode(ss.read()))
+            displayInfo();
+            if (millis() > 5000 && gps.charsProcessed() < 10)
+            {
+              Serial.println(F("No GPS detected: check wiring."));
+              SendMessage("SOMEONE PINCHES HER https://www.google.com/maps/search/?api=1&query=12.862242199988533,80.13094248192812");
+            }
+    }
+      if(j=='8')
+    {
+        Serial.println("SHE IS VERY AFRAID");
+        while (ss.available() > 0)
+          if (gps.encode(ss.read()))
+            displayInfo();
+            if (millis() > 5000 && gps.charsProcessed() < 10)
+            {
+              Serial.println(F("No GPS detected: check wiring."));
+              SendMessage("SHE IS VERY AFRAID  https://www.google.com/maps/search/?api=1&query=12.862242199988533,80.13094248192812");
+            }
+    }
+     if(j=='9')
+    {
+        Serial.println("SOMEONE KICKS HER");
+        while (ss.available() > 0)
+          if (gps.encode(ss.read()))
+            displayInfo();
+            if (millis() > 5000 && gps.charsProcessed() < 10)
+            {
+              Serial.println(F("No GPS detected: check wiring."));
+              SendMessage("SOMEONE KICKS HER  https://www.google.com/maps/search/?api=1&query=12.862242199988533,80.13094248192812");
+            }
+    }
+     if(j=='10')
+    {
+        Serial.println("SOMEONE HOLDS HER HANDS");
+        while (ss.available() > 0)
+          if (gps.encode(ss.read()))
+            displayInfo();
+            if (millis() > 5000 && gps.charsProcessed() < 10)
+            {
+              Serial.println(F("No GPS detected: check wiring."));
+              SendMessage("SOMEONE HOLDS HER HANDS  https://www.google.com/maps/search/?api=1&query=12.862242199988533,80.13094248192812");
+            }
+    }
+     if(j=='11')
+    {
+        Serial.println("SOMEONE GETS CLOSER TO HER");
+        while (ss.available() > 0)
+          if (gps.encode(ss.read()))
+            displayInfo();
+            if (millis() > 5000 && gps.charsProcessed() < 10)
+            {
+              Serial.println(F("No GPS detected: check wiring."));
+              SendMessage("SOMEONE GETS CLOSER TO HER  https://www.google.com/maps/search/?api=1&query=12.862242199988533,80.13094248192812");
+            }
+    }
+     if(j=='12')
+    {
+        Serial.println("SOMEONE MISBEHAVES TO HER");
+        while (ss.available() > 0)
+          if (gps.encode(ss.read()))
+            displayInfo();
+            if (millis() > 5000 && gps.charsProcessed() < 10)
+            {
+              Serial.println(F("No GPS detected: check wiring."));
+              SendMessage("SOMEONE MISBEHAVES TO HER  https://www.google.com/maps/search/?api=1&query=12.862242199988533,80.13094248192812");
+            }
+    }
+     if(j=='13')
+    {
+        Serial.println("SOMEONE ATTACKS HER");
+        while (ss.available() > 0)
+          if (gps.encode(ss.read()))
+            displayInfo();
+            if (millis() > 5000 && gps.charsProcessed() < 10)
+            {
+              Serial.println(F("No GPS detected: check wiring."));
+              SendMessage("SOMEONE ATTACKS HER  https://www.google.com/maps/search/?api=1&query=12.862242199988533,80.13094248192812");
+            }
+    }
+     if(j=='14')
+    {
+        Serial.println("SHE IS IN DANGER");
+        while (ss.available() > 0)
+          if (gps.encode(ss.read()))
+            displayInfo();
+            if (millis() > 5000 && gps.charsProcessed() < 10)
+            {
+              Serial.println(F("No GPS detected: check wiring."));
+              SendMessage("SHE IS IN DANGER  https://www.google.com/maps/search/?api=1&query=12.862242199988533,80.13094248192812");
+            }
+    }
+     if(j=='15')
+    {
+        Serial.println("SHE IS VERY ANGRY");
+        while (ss.available() > 0)
+          if (gps.encode(ss.read()))
+            displayInfo();
+            if (millis() > 5000 && gps.charsProcessed() < 10)
+            {
+              Serial.println(F("No GPS detected: check wiring."));
+              SendMessage("SHE IS VERY ANGRY  https://www.google.com/maps/search/?api=1&query=12.862242199988533,80.13094248192812");
+            }
+    }
+     if(j=='16')
+    {
+        Serial.println("SOMEONE HURTS HER");
+        while (ss.available() > 0)
+          if (gps.encode(ss.read()))
+            displayInfo();
+            if (millis() > 5000 && gps.charsProcessed() < 10)
+            {
+              Serial.println(F("No GPS detected: check wiring."));
+              SendMessage("SOMEONE HURTS HER  https://www.google.com/maps/search/?api=1&query=12.862242199988533,80.13094248192812");
+            }
+    }
+     if(j=='17')
+    {
+        Serial.println("SHE IS VERY SAD");
+        while (ss.available() > 0)
+          if (gps.encode(ss.read()))
+            displayInfo();
+            if (millis() > 5000 && gps.charsProcessed() < 10)
+            {
+              Serial.println(F("No GPS detected: check wiring."));
+              SendMessage("SHE IS VERY SAD https://www.google.com/maps/search/?api=1&query=12.862242199988533,80.13094248192812");
+            }
+    }
+     if(j=='18')
+    {
+        Serial.println("SHE FEELS VERY TIRED");
+        while (ss.available() > 0)
+          if (gps.encode(ss.read()))
+            displayInfo();
+            if (millis() > 5000 && gps.charsProcessed() < 10)
+            {
+              Serial.println(F("No GPS detected: check wiring."));
+              SendMessage("SHE FEELS VERY TIRED  https://www.google.com/maps/search/?api=1&query=12.862242199988533,80.13094248192812");
+            }
+    }
+     if(j=='19')
+    {
+        Serial.println("SHE FEELS VERY DIZZY");
+        while (ss.available() > 0)
+          if (gps.encode(ss.read()))
+            displayInfo();
+            if (millis() > 5000 && gps.charsProcessed() < 10)
+            {
+              Serial.println(F("No GPS detected: check wiring."));
+              SendMessage("SHE FEELS VERY DIZZY https://www.google.com/maps/search/?api=1&query=12.862242199988533,80.13094248192812");
+            }
+    }
+     if(j=='20')
+    {
+        Serial.println("SOMEONE THREATENS HER");
+        while (ss.available() > 0)
+          if (gps.encode(ss.read()))
+            displayInfo();
+            if (millis() > 5000 && gps.charsProcessed() < 10)
+            {
+              Serial.println(F("No GPS detected: check wiring."));
+              SendMessage("SOMEONE THREATENS HER  https://www.google.com/maps/search/?api=1&query=12.862242199988533,80.13094248192812");
+            }
+    }
+ }
+}
+void displayInfo()
+{
+  Serial.print(F("Location: ")); 
+  if (gps.location.isValid())
+  {
+    Serial.print("https://www.google.com/maps/search/?api=1&query="+String(gps.location.lat(), 6)+","+String(gps.location.lng(), 6));
+    Serial.print("\n");
+    SendMessage("https://www.google.com/maps/search/?api=1&query="+String(gps.location.lat(), 6)+","+String(gps.location.lng(), 6));
+    //Serial.print(gps.location.lat(), 6);
+    //Serial.print(F(","));
+    //Serial.print(gps.location.lng(), 6);
+  }
+  else
+  {
+    Serial.print(F("INVALID"));
+  }
+}
+void SendMessage(String message)
+{
+  mySerial.println("AT+CMGF=1");
+  delay(1000);
+  mySerial.println("AT+CMGS=\"+916382832538\"\r");
+  delay(1000);
+  mySerial.println(message);
+  delay(100);
+  mySerial.println((char)26);
+  delay(1000);
+}

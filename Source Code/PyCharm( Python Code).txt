@@ -1,0 +1,159 @@
+import speech_recognition as sr
+import pyttsx3
+
+# Initialize the recognizer
+r = sr.Recognizer()
+import serial
+import time
+
+try:
+    arduino = serial.Serial(port='COM3', baudrate=9600, timeout=0.1)
+except Exception as e:
+    print("Error:", e)
+
+
+
+def write_read(x):
+    arduino.write(bytes(x, 'utf-8'))
+
+
+# Function to convert text to
+# speech
+def SpeakText(command):
+    # Initialize the engine
+    engine = pyttsx3.init()
+    engine.say(command)
+    engine.runAndWait()
+
+
+# Loop infinitely for user to
+# speak
+
+while (1):
+
+    # Exception handling to handle
+    # exceptions at the runtime
+    try:
+
+        # use the microphone as source for input.
+        with sr.Microphone() as source2:
+
+            # wait for a second to let the recognizer
+            # adjust the energy threshold based on
+            # the surrounding noise level
+            r.adjust_for_ambient_noise(source2, duration=0.2)
+
+            # listens for the user's input
+            audio2 = r.listen(source2)
+
+            # Using google to recognize audio
+            MyText = r.recognize_google(audio2)
+            MyText = MyText.lower()
+
+            print("you say ", MyText)
+            # SpeakText(MyText)
+            if (MyText == "help me"):
+                print("SHE NEEDS HELP")
+                SpeakText("SHE NEEDS HELP")
+                arduino.write(bytes('1', 'utf-8'))
+
+            if (MyText == "i am in danger"):
+                print("SHE IS IN DANGER")
+                SpeakText("SHE IS IN DANGER")
+                arduino.write(bytes('2', 'utf-8'))
+
+            if (MyText == "don't hit me"):
+                print("SOMEONE HITS HER")
+                SpeakText("SOMEONE HITS HER")
+                arduino.write(bytes('3', 'utf-8'))
+
+            if (MyText == "don't pull me"):
+                print("SOMEONE PULLS HER")
+                SpeakText("SOMEONE PULLS HER")
+                arduino.write(bytes('4', 'utf-8'))
+
+            if (MyText == "leave me"):
+                print("SOMEONE HOLDS HER")
+                SpeakText("SOMEONE HOLDS HER")
+                arduino.write(bytes('5', 'utf-8'))
+
+            if (MyText == "don't push me"):
+                print("SOMEONE PUSHES HER")
+                SpeakText("SOMEONE PUSHES HER")
+                arduino.write(bytes('6', 'utf-8'))
+
+            if (MyText == "don't pinch me"):
+                print("SOMEONE PINCHES HER")
+                SpeakText("SOMEONE PINCHES HER")
+                arduino.write(bytes('7', 'utf-8'))
+
+            if (MyText == "i am very afraid"):
+                print("SHE IS VERY AFRAID")
+                SpeakText("SHE IS VERY AFRAID")
+                arduino.write(bytes('8', 'utf-8'))
+
+            if (MyText == "don't kick me"):
+                print("SOMEONE KICKS HER")
+                SpeakText("SOMEONE KICKS HER")
+                arduino.write(bytes('9', 'utf-8'))
+
+            if (MyText == "please leave my hands"):
+                print("SOMEONE HOLDS HER HANDS")
+                SpeakText("SOMEONE HOLDS HER HANDS")
+                arduino.write(bytes('10', 'utf-8'))
+
+            if (MyText == "don't get closer to me"):
+                print("SOMEONE GETS CLOSER TO HER")
+                SpeakText("SOMEONE GETS CLOSER TO HER")
+                arduino.write(bytes('11', 'utf-8'))
+
+            if (MyText == "behave yourself"):
+                print("SOMEONE MISBEHAVES TO HER")
+                SpeakText("SOMEONE MISBEHAVES TO HER")
+                arduino.write(bytes('12', 'utf-8'))
+
+            if (MyText == "don't attack me"):
+                print("SOMEONE ATTACKS HER")
+                SpeakText("SOMEONE ATTACKS HER")
+                arduino.write(bytes('13', 'utf-8'))
+
+            if (MyText == "don't kill me"):
+                print("SHE IS IN DANGER")
+                SpeakText("SHE IS IN DANGER")
+                arduino.write(bytes('14', 'utf-8'))
+
+            if (MyText == "get lost from here"):
+                print("SHE IS VERY ANGRY")
+                SpeakText("SHE IS VERY ANGRY")
+                arduino.write(bytes('15', 'utf-8'))
+
+            if (MyText == "dont hurt me"):
+                print("SOMEONE HURTS HER")
+                SpeakText("SOMEONE HURTS HER")
+                arduino.write(bytes('16', 'utf-8'))
+
+            if (MyText == "i am very sad"):
+                print("SHE IS VERY SAD")
+                SpeakText("SHE IS VERY SAD")
+                arduino.write(bytes('17', 'utf-8'))
+
+            if (MyText == "i feel very tired"):
+                print("SHE FEELS VERY TIRED")
+                SpeakText("SHE FEELS VERY TIRED")
+                arduino.write(bytes('18', 'utf-8'))
+
+            if (MyText == "i feel very dizzy"):
+                print("SHE FEELS VERY DIZZY")
+                SpeakText("SHE FEELS VERY DIZZY")
+                arduino.write(bytes('19', 'utf-8'))
+
+            if (MyText == "don't threaten me"):
+                print("SOMEONE THREATENS HER")
+                SpeakText("SOMEONE THREATENS HER")
+                arduino.write(bytes('20', 'utf-8'))
+
+    except sr.RequestError as e:
+        print("Could not request results; {0}".format(e))
+
+    except sr.UnknownValueError:
+        a = 0;
